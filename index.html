@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Github API: User search</title>
+        <meta name="description" content="Github API requests">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" 
+            media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="container">
+            <form id="user-input" class="js-user-input">
+                <label for="github-username">Enter user name to browse repositories</label>
+                <input type="text" id="username-input" class="js-username"placeholder="anamrouti">
+                <button type="submit" id="input-button" class="button submit">Search Repos</button>
+                
+                <section class="results hidden">
+                    <h3>Here are some of the repos from this user:</h3>
+                    <ul class="results-repo"></ul>
+                </section>
+            </form>
+        </div>
+    </body>
+</html>
