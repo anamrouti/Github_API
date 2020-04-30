@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class="container">
+        <main class="container">
             <form id="user-input" class="js-user-input">
                 <label for="github-username">Enter user name to browse repositories</label>
                 <input type="text" id="username-input" class="js-username"placeholder="anamrouti">
@@ -19,9 +19,11 @@
                 
                 <section class="results hidden">
                     <h3>Here are some of the repos from this user:</h3>
-                    <ul class="results-repo"></ul>
+                    <ul class="results-list"></ul>
                 </section>
             </form>
-        </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="index.js"></script>
     </body>
 </html>

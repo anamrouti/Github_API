@@ -3,9 +3,10 @@
 
 function getRepos(username) {
   fetch(`https://api.github.com/users/${username}/repos`)
+  $('#results-list').empty()
   .then(response => response.json())
   .then(responseJson => 
-    displayResults(responseJson, username))
+    displayResults(responseJson))
    .then(response => {
     if (response.ok)
       return response.json()
@@ -16,24 +17,23 @@ function getRepos(username) {
   
 }
 
-function displayResults(responseJson, username) {
+function displayResults(responseJson) {
   console.log(responseJson.message);
 
     for (let i = 0; i < responseJson.public_repos; i++){
-    $('#results-repo').append(`
+    $('#results-list').append(`
     <li><a href="${responseJson.message[i].html_url}">
-    <h2>${responseJson.message[i].name}</h2></a>`);
+    <h2>${responseJson.message[i].name}</h2></a></li>`);
     }
   //display the results section
-  $(".results").removeClass("hidden");
+  $("#results").removeClass("hidden");
 }
 
 function watchForm(){
-  $('form').submit(event => {
+  $('.form').submit(event => {
     event.preventDefault();
-    let selectedUsername = $('.username-input').val();
-    getRepos(selectedUsername);
-    
+    let username = $('#username-input').val();
+    getRepos(username);
   });
 }
 
