@@ -1,38 +1,39 @@
 'use strict';
 
+const APIkey = "";
 
 function getRepos(username) {
   fetch(`https://api.github.com/users/${username}/repos`)
   $('#results-list').empty()
-  .then(response => response.json())
+  .then(response => { 
+      if (response.ok){
+        return response.json();
+    } 
+    throw new Error(response.error);
+    })
   .then(responseJson => 
     displayResults(responseJson))
-   .then(response => {
-    if (response.ok)
-      return response.json()
-    throw Error()
-  })
   .catch(error => alert('No repos found for that user-name. Try again later'));
  
   
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson.message);
+  console.log(responseJson);
 
     for (let i = 0; i < responseJson.public_repos; i++){
-    $('#results-list').append(`
+     $('.results-list').append(`
     <li><a href="${responseJson.message[i].html_url}">
     <h2>${responseJson.message[i].name}</h2></a></li>`);
     }
   //display the results section
-  $("#results").removeClass("hidden");
+  $(".results").removeClass("hidden");
 }
 
 function watchForm(){
-  $('.form').submit(event => {
+  $('form').submit(event => {
     event.preventDefault();
-    let username = $('#username-input').val();
+    let username = $('.username-input').val();
     getRepos(username);
   });
 }
