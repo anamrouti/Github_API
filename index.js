@@ -3,19 +3,17 @@
 const APIkey = "";
 
 function getRepos(username) {
-  fetch(`https://api.github.com/users/${username}/repos`)
-  $('#results-list').empty()
-  .then(response => { 
-      if (response.ok){
+    $('.results').empty();
+    fetch(`https://api.github.com/users/${username}/repos`)
+    .then(response => { 
+      if (response.ok) {
         return response.json();
-    } 
+        } 
     throw new Error(response.error);
     })
-  .then(responseJson => 
-    displayResults(responseJson))
-  .catch(error => alert('No repos found for that user-name. Try again later'));
- 
-  
+    .then(responseJson => 
+        displayResults(responseJson))
+    .catch(error => alert('No repos found for that user-name. Try again later'));   
 }
 
 function displayResults(responseJson) {
