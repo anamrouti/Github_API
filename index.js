@@ -16,11 +16,11 @@ function getRepos(username) {
     .catch(error => alert('No repos found for that user-name. Try again later'));   
 }
 
-function displayResults(responseJson) {
+function displayResults(responseJson, username) {
   console.log(responseJson);
 
     for (let i = 0; i < responseJson.public_repos; i++){
-     $('.results-list').append(`
+     $('#results-list').append(`
     <li><a href="${responseJson.message[i].html_url}">
     <h2>${responseJson.message[i].name}</h2></a></li>`);
     }
