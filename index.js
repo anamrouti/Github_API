@@ -8,14 +8,14 @@ function getRepos(username) {
       if (response.ok) {
         return response.json();
         } 
-    throw new Error(response.statusText);
+        throw new Error(response.statusText);
     })
     .then(responseJson => 
         displayResults(responseJson))
     .catch(error => alert('No repos found for that user-name. Try again later'));   
 }
 
-function displayResults(responseJson, username) {
+function displayResults(responseJson) {
   console.log(responseJson);
 
     for (let i = 0; i < responseJson.items.length; i++){
